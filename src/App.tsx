@@ -1,65 +1,36 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import { useEffect } from "react";
+import Home from "./pages/home/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import { useState } from "react";
+import { useParamUser } from "./hooks/useParamUser";
+import ParametersPage from "./pages/parameters/ParametersPage";
+import NavBar from "./components/NavBar";
 
 function App() {
-  useEffect(() => {
-    const paramUser = {
-      id: 1,
-      firstName: "John",
-      secondName: "Doe",
-      email: "johndoe@example.com",
+  const [userId] = useState("123"); //FAKE USER
+  const { user, loading, error } = useParamUser(userId);
 
-      parameters: [
-        {
-          id: 101,
-          date: "2024-03-05",
-          name: "Height",
-          valueParameter: "180cm",
-          paramUser: {
-            id: 1,
-            firstName: "John",
-            secondName: "Doe",
-            email: "johndoe@example.com",
-          },
-        },
-        {
-          id: 102,
-          date: "2024-03-04",
-          name: "Weight",
-          valueParameter: "75kg",
-          paramUser: {
-            id: 1,
-            firstName: "John",
-            secondName: "Doe",
-            email: "johndoe@example.com",
-          },
-        },
-        {
-          id: 103,
-          date: "2024-03-03",
-          name: "Blood Type",
-          valueParameter: "O+",
-          paramUser: {
-            id: 1,
-            firstName: "John",
-            secondName: "Doe",
-            email: "johndoe@example.com",
-          },
-        },
-      ],
-    };
-
-    localStorage.setItem("paramUser", JSON.stringify(paramUser));
-    console.log("ParamUser stored in localStorage!");
-  });
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!user) return <p>User not found.</p>;
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </Router>
+    <>
+      <div className="m-4">
+        <div className="h-25 mb-1">
+          <NavBar paramUser={user}></NavBar>
+        </div>
+        <div className="h-75 ">
+          <Router>
+            <Routes>
+              <Route path="*" element={<Home />} />
+              <Route path="/parameters" element={<ParametersPage paramUser={user} />} />
+            </Routes>
+          </Router>
+        </div>
+      </div>
+    </>
   );
 }
 

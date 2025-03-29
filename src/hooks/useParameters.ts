@@ -1,28 +1,29 @@
 import { useEffect, useState } from "react";
 import { ParamUser } from "../model/ParamUser";
+import { TextParameter } from "../model/TextParameter";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-export function useParamUser(userId: string) {
-  const [user, setUser] = useState<ParamUser | null>(null);
+export function useParameters(userId: string) {
+  const [parameters,setParameters] = useState<TextParameter[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!userId) return;
 
-    const fetchUser = async () => {
+    const fetchParameters = async () => {
       try {
         setLoading(true);
         const response = await fetch(
-          BASE_URL + `/api/users/${userId}`
+          BASE_URL + `/api/textParameters/${userId}`
         );
         if (!response.ok) {
-          throw new Error("Failed to fetch user");
+          throw new Error("Failed to fetch parameters");
         }
 
-        const data: ParamUser = await response.json();
-        setUser(data);
+        const data: TextParameter[] = await response.json();
+        setParameters(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Unknown error");
       } finally {
@@ -30,8 +31,8 @@ export function useParamUser(userId: string) {
       }
     };
 
-    fetchUser();
+    fetchParameters();
   }, [userId]);
 
-  return { user, loading, error };
+  return { parameters, loading, error };
 }

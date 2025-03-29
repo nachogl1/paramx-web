@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1a2b3c",
+    "date": "2024-03-29T10:15:30Z",
+    "valueParameter": "Sample Value 1",
+    "name": "Parameter One",
+    "paramUser": {
+      "id": "user123",
+      "username": "john_doe",
+      "role": "admin"
+    }
+  },
+  {
+    "id": "4d5e6f",
+    "date": "2024-03-28T14:45:00Z",
+    "valueParameter": "Sample Value 2",
+    "name": "Parameter Two",
+    "paramUser": {
+      "id": "user123",
+      "username": "john_doe",
+      "role": "admin"
+    }
+  },
+  {
+    "id": "7g8h9i",
+    "date": "2024-03-27T08:30:15Z",
+    "valueParameter": "Sample Value 3",
+    "name": "Parameter Three",
+    "paramUser": {
+      "id": "user123",
+      "username": "john_doe",
+      "role": "admin"
+    }
+  }
+]
