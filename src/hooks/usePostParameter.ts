@@ -6,8 +6,13 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 export function usePostParameter() {
   const [loading, setLoading] = useState<boolean>(true);
 
-  const formatDateForServer = (date: Date): string =>
-    date.toISOString().split("T")[0];
+  const formatDateForServer = (date: Date): string =>{
+    return date.toLocaleDateString("en-GB", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).split("/").reverse().join("-");
+  }
 
   const postParameters = async (newParameter: TextParameter | null) => {
     setLoading(true);

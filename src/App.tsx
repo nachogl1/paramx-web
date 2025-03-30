@@ -6,8 +6,11 @@ import ParametersPage from "./pages/parameters/ParametersPage";
 import NavBar from "./components/shared/NavBar";
 import { ToastContainer } from "react-toastify";
 
+
+const VITE_MOCK_USER_ID =import.meta.env.VITE_MOCK_USER_ID;
+
 function App() {
-  const [userId] = useState("5099b1a3-9646-43ec-aa03-c6e8d50b27d0"); //todo:FAKE USER
+  const [userId] = useState(VITE_MOCK_USER_ID); //todo:FAKE USER
   const { user, loading, error } = useFetchParamUser(userId);
 
   if (loading) return <p>Loading...</p>;
