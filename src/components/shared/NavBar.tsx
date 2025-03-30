@@ -1,4 +1,4 @@
-import { ParamUser } from "../model/ParamUser";
+import { ParamUser } from "../../model/ParamUser";
 
 interface NavBarProps {
   paramUser: ParamUser;
@@ -7,7 +7,7 @@ interface NavBarProps {
 const NavBar = ({ paramUser }: NavBarProps) => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-secondary-subtle">
         <div className="container-fluid">
           <span className="navbar-brand">Welcome {paramUser.firstName}!</span>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
