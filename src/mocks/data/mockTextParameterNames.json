@@ -1,1 +1,17 @@
-["Name1", "Name2", "Name3"]
+[
+  {
+    "id": "1",
+    "name": "name1",
+    "paramUser": {}
+  },
+  {
+    "id": "2",
+    "name": "name2",
+    "paramUser": {}
+  },
+  {
+    "id": "3",
+    "name": "name3",
+    "paramUser": {}
+  }
+]

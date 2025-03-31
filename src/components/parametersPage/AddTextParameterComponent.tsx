@@ -3,10 +3,11 @@ import { ParamUser } from "../../model/ParamUser";
 import { TextParameter } from "../../model/TextParameter";
 import { usePostParameter } from "../../hooks/usePostParameter";
 import { toast } from "react-toastify";
+import { TextParameterName } from "../../model/TextParameterName";
 
 interface AddTextParameterComponentProps {
   paramUser: ParamUser;
-  parameterNames: string[];
+  parameterNames: TextParameterName[];
   fetchTextParameters: (paramUserId: string) => void;
 }
 
@@ -71,10 +72,10 @@ const AddTextParameterComponent = ({
             {dropdownButtonText}
           </button>
           <ul className="dropdown-menu">
-            {parameterNames?.map((name: string, index) => (
+            {parameterNames?.map((parameterName:TextParameterName , index) => (
               <li key={`names-${index}`}>
                 <a className="dropdown-item" onClick={handleDropdownChange}>
-                  {name}
+                  {parameterName.name}
                 </a>
               </li>
             ))}

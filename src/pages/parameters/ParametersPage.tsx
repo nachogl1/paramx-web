@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { ParamUser } from "../../model/ParamUser";
 import { useFetchTextParameters } from "../../hooks/useFetchTextParameters";
 import { useFetchParametersName } from "../../hooks/useFetchParametersName";
-import AddTextParameterComponent from "../../components/parametersPage/addTextParameterComponent";
 import ParametersListComponent from "../../components/parametersPage/ParametersListComponent";
+import AddTextParameterComponent from "../../components/parametersPage/AddTextParameterComponent";
 
 interface ParametersPageProps {
   paramUser: ParamUser;
