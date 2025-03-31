@@ -1,20 +1,33 @@
+import { useDeleteParameter } from "../../hooks/useDeleteParameter";
+import { ParamUser } from "../../model/ParamUser";
 import { TextParameter } from "../../model/TextParameter";
 
 interface ParametersListComponentProps {
   parameters: TextParameter[];
+  paramUser: ParamUser;
   loading: boolean;
+  fetchTextParameters: (paramUserId: string) => void;
   error: string | null;
 }
 
 const ParametersListComponent = ({
   parameters,
   loading,
+  paramUser,
   error,
+  fetchTextParameters,
 }: ParametersListComponentProps) => {
+  const { deleteParameter } = useDeleteParameter();
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!parameters) return <p>Paramters not found</p>;
+
+  const handleDelete = (id: string) => {
+    deleteParameter(id).then(() => {
+      fetchTextParameters(paramUser.id);
+    });
+  };
 
   return (
     <div>
@@ -39,7 +52,11 @@ const ParametersListComponent = ({
                 Edit
               </button>
 
-              <button type="button" className="btn btn-danger disabled">
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={() => handleDelete(parameter.id)}
+              >
                 X
               </button>
             </li>

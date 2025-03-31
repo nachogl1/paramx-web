@@ -35,6 +35,8 @@ const ParametersPage = ({ paramUser }: ParametersPageProps) => {
       ></AddTextParameterComponent>
 
       <ParametersListComponent
+        paramUser={paramUser}
+        fetchTextParameters={fetchTextParameters}
         parameters={parameters}
         loading={loading}
         error={error}
