@@ -96,7 +96,7 @@ const AddTextParameterComponent = ({
           id="add-button"
           onClick={handleAddParameter}
         >
-          Add
+          Add parameter
         </button>
       </div>
     </div>

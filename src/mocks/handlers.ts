@@ -19,4 +19,8 @@ export const handlers = [
     const requestBody = await request.json();
     return HttpResponse.json({ data: requestBody }, { status: 201 });
   }),
+  http.post(BASE_URL + "/textParameters/names", async ({ request }) => {
+    const requestBody = await request.json();
+    return HttpResponse.json({ data: requestBody }, { status: 201 });
+  }),
 ];

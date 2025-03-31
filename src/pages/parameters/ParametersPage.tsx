@@ -4,6 +4,7 @@ import { useFetchTextParameters } from "../../hooks/useFetchTextParameters";
 import { useFetchParametersName } from "../../hooks/useFetchParametersName";
 import ParametersListComponent from "../../components/parametersPage/ParametersListComponent";
 import AddTextParameterComponent from "../../components/parametersPage/AddTextParameterComponent";
+import AddTextParameterNameComponent from "../../components/parametersPage/AddTextParameterNameComponent";
 
 interface ParametersPageProps {
   paramUser: ParamUser;
@@ -22,12 +23,17 @@ const ParametersPage = ({ paramUser }: ParametersPageProps) => {
 
   return (
     <div className="m-1">
+      <AddTextParameterNameComponent
+        paramUser={paramUser}
+        fetchTextParametersNames={fetchParameterNames}
+      ></AddTextParameterNameComponent>
+
       <AddTextParameterComponent
         paramUser={paramUser}
         parameterNames={parameterNames}
         fetchTextParameters={fetchTextParameters}
       ></AddTextParameterComponent>
-      
+
       <ParametersListComponent
         parameters={parameters}
         loading={loading}
